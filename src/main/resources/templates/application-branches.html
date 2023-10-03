@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+          crossorigin="anonymous">
+
+    <title>Branch Application</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>BAYİLİK ÖN BAŞVURU FORMU</h3>
+    <hr>
+
+
+    <a th:href="@{/applicationBranches/newApplicationBranch}"
+       class="btn btn-primary btn-sm mb-3"> YENİ ŞUBE BAŞVURUSU </a>
+
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <td>TC KİMLİK NO</td>
+            <td>İSİM SOYİSİM</td>
+            <td>DOĞUM TARİHİ</td>
+            <td>TELEFON</td>
+            <td>E-POSTA</td>
+            <td>ADRES</td>
+            <td>PERAKENDE TİCARETİ İLE UĞRAŞTINIZ MI?</td>
+            <td>LOKUMCU BABA’YI TERCİH ETMENİZİN SEBEBİ NEDİR?</td>
+            <td>HANGİ İL/İLÇE/SEMT İÇİN LOKUMCU BABA İŞLETMECİLİĞİ DÜŞÜNÜYORSUNUZ?</td>
+            <td>YATIRIM MİKTARINIZ NEDİR?</td>
+            <td>EKLEMEK İSTEDİKLERİNİZ</td>
+            <td>GÜNCELLE</td>
+            <td>SİL</td>
+
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="tempBranchApplication : ${branchApplication}">
+            <td th:text=" ${tempBranchApplication.idNumber}"/>
+            <td th:text="${tempBranchApplication.name + ' ' +tempBranchApplication.surname}"/>
+            <td th:text="${tempBranchApplication.birthDay}"/>
+            <td th:text="${tempBranchApplication.phoneNumber}"/>
+            <td th:text="${tempBranchApplication.email}"/>
+            <td th:text="${tempBranchApplication.address}"/>
+            <td th:text="${tempBranchApplication.hasRetailExperience}"/>
+            <td th:text="${tempBranchApplication.reasonOfPrefer}"/>
+            <td th:text="${tempBranchApplication.preferredCity + '/' +tempBranchApplication.preferredDistrict+ '/' +tempBranchApplication.preferredTown}"/>
+            <td th:text="${tempBranchApplication.investmentAmount}"/>
+            <td th:text="${tempBranchApplication.notes}"/>
+
+            <td>
+
+
+                <a
+                        th:href="@{/applicationBranches/showFormForUpdate(id=${tempBranchApplication.branchApplicationId})}"
+                        class="btn btn-info btn-sm"> Güncelle </a>
+
+            </td>
+            <td>
+                <a th:href="@{/applicationBranches/delete(id=${tempBranchApplication.branchApplicationId})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="if (!(confirm('Başvuru kaydını silmek istiyor musunuz?'))) return false">
+                    Sil </a>
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
+
+
+

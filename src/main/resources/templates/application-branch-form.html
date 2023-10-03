@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+<title>New Application Branch</title>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<h3>Yeni Şube Başvuru Formu</h3>
+		<hr>
+
+
+		<form action="#" th:action="@{/applicationBranches}" th:object="${applicationBranch}"
+			method="POST">
+
+
+			<input type="text"
+				th:field="*{idNumber}" class="form-control mb-4 col-4"
+				placeholder="TC KİMLİK NO"
+				   maxlength="11"
+			>
+			<input type="text"
+				th:field="*{name}" class="form-control mb-4 col-4"
+				placeholder="İSİM"
+				   maxlength="35"
+			>
+			<input type="text"
+				th:field="*{surname}" class="form-control mb-4 col-4"
+				placeholder="SOYİSİM"
+				   maxlength="11"
+			>
+			<input type="text"
+				th:field="*{birthDay}" class="form-control mb-4 col-4"
+				placeholder="DOĞUM TARİHİ"
+				   pattern="\d{2}/\d{2}/\d{4}"
+			>
+			<input type="text"
+				   th:field="*{phoneNumber}" class="form-control mb-4 col-4"
+				   placeholder="TELEFON"
+				   maxlength="10"
+			>
+			<input type="email"
+				   th:field="*{email}" class="form-control mb-4 col-4"
+				   placeholder="E-POSTA"
+				   maxlength="35"
+			>
+			<input type="text"
+				   th:field="*{address}" class="form-control mb-4 col-4"
+				   placeholder="ADRES"
+				   maxlength="100"
+			>
+			<h6>PERAKENDE TİCARETİ İLE UĞRAŞTINIZ MI?</h6>
+			<input type="checkbox"
+				   th:field="*{hasRetailExperience}" class="form-control mb-4 col-4"
+				   placeholder="false">
+			<input type="text"
+				   th:field="*{reasonOfPrefer}" class="form-control mb-4 col-4"
+				   placeholder="LOKUMCU BABA’YI TERCİH ETMENİZİN SEBEBİ NEDİR?"
+				   maxlength="25"
+			>
+			<h6>HANGİ İL/İLÇE/SEMT İÇİN LOKUMCU BABA İŞLETMECİLİĞİ DÜŞÜNÜYORSUNUZ?</h6>
+			<input type="text"
+				   th:field="*{preferredCity}" class="form-control mb-4 col-4"
+				   placeholder="İL"
+				   maxlength="15"
+			>
+			<input type="text"
+				   th:field="*{preferredDistrict}" class="form-control mb-4 col-4"
+				   placeholder="İLÇE"
+				   maxlength="15"
+			>
+			<input type="text"
+				   th:field="*{preferredTown}" class="form-control mb-4 col-4"
+				   placeholder="SEMT"
+				   maxlength="15"
+			>
+			<br>
+			<input type="number"
+				   th:field="*{investmentAmount}" class="form-control mb-4 col-4"
+				   placeholder="YATIRIM MİKTARINIZ NEDİR?">
+			<input type="text"
+				   th:field="*{notes}" class="form-control mb-4 col-4"
+				   placeholder="EKLEMEK İSTEDİKLERİNİZ"
+				   maxlength="1000"
+			>
+
+
+
+			<button type="submit" class="btn btn-info col-2">Kaydet</button>
+
+		</form>
+
+		<hr>
+		<a th:href="@{/applicationBranches}">Başvuru Listesine İlerle</a>
+
+	</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
